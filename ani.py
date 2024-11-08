@@ -1,40 +1,61 @@
-# Animal Categories with English to Hindi Translation and Examples
+# Animal Categories with English to Hindi Translation, including Dissolved and Undissolved examples
 
 animal_categories = {
     "Mammals": {
         "hindi": "स्तनधारी",
-        "examples": [
-            ("Elephant", "हाथी"), ("Lion", "सिंह"), ("Tiger", "बाघ"), ("Bear", "भालू"),
-            ("Dog", "कुत्ता"), ("Cat", "बिल्ली"), ("Monkey", "बंदर"), ("Horse", "घोड़ा"),
-            ("Deer", "हिरण"), ("Fox", "लोमड़ी"), ("Wolf", "भेड़िया"), ("Cow", "गाय"),
-            ("Buffalo", "भैंस"), ("Rabbit", "खरगोश"), ("Bat", "चमगादड़"), ("Sheep", "भेड़"),
-            ("Goat", "बकरी"), ("Camel", "ऊंट"), ("Pig", "सूअर"), ("Rat", "चूहा")
+        "dissolved": [
+            ("Whale", "व्हेल"),
+            ("Dolphin", "डॉल्फिन"),
+            ("Seal", "सील"),
+            ("Manatee", "मेनाटी"),
+            ("Otter", "ओटर"),
+            ("Sea Lion", "समुद्री सिंह"),
+            ("Narwhal", "नारव्हाल"),
+            ("Beluga", "बेलुगा"),
+            ("Walrus", "वालरस"),
+            ("Sea Cow", "समुद्री गाय")
+        ],
+        "undissolved": [
+            ("Elephant", "हाथी"),
+            ("Lion", "सिंह"),
+            ("Tiger", "बाघ"),
+            ("Bear", "भालू"),
+            ("Dog", "कुत्ता"),
+            ("Cat", "बिल्ली"),
+            ("Horse", "घोड़ा"),
+            ("Cow", "गाय"),
+            ("Goat", "बकरी"),
+            ("Pig", "सूअर")
         ]
     },
     "Birds": {
         "hindi": "पक्षी",
-        "examples": [
-            ("Eagle", "गरुड़"), ("Parrot", "तोता"), ("Peacock", "मोर"), ("Sparrow", "गौरैया"),
-            ("Crow", "कौआ"), ("Pigeon", "कबूतर"), ("Duck", "बत्तख"), ("Swan", "हंस"),
-            ("Owl", "उल्लू"), ("Woodpecker", "कठफोड़वा"), ("Kingfisher", "रामचिरैया"),
-            ("Penguin", "पेंगुइन"), ("Flamingo", "फ्लेमिंगो"), ("Hawk", "बाज"),
-            ("Turkey", "टर्की"), ("Quail", "बटेर"), ("Vulture", "गिद्ध"), ("Robin", "रॉबिन"),
-            ("Canary", "कैनरी"), ("Seagull", "सीगल")
+        "dissolved": [
+            ("Seagull", "सीगल"),
+            ("Pelican", "पेलिकन"),
+            ("Albatross", "अल्बाट्रॉस"),
+            ("Cormorant", "कॉरमोरेंट"),
+            ("Heron", "बगुला"),
+            ("Kingfisher", "रामचिरैया"),
+            ("Duck", "बत्तख"),
+            ("Swan", "हंस"),
+            ("Crane", "सारस"),
+            ("Flamingo", "फ्लेमिंगो")
+        ],
+        "undissolved": [
+            ("Eagle", "गरुड़"),
+            ("Parrot", "तोता"),
+            ("Peacock", "मोर"),
+            ("Sparrow", "गौरैया"),
+            ("Crow", "कौआ"),
+            ("Pigeon", "कबूतर"),
+            ("Owl", "उल्लू"),
+            ("Robin", "रॉबिन"),
+            ("Canary", "कैनरी"),
+            ("Turkey", "टर्की")
         ]
     },
-    "Reptiles": {
-        "hindi": "सरीसृप",
-        "examples": [
-            ("Cobra", "नाग"), ("Python", "अजगर"), ("Crocodile", "मगरमच्छ"),
-            ("Lizard", "छिपकली"), ("Turtle", "कछुआ"), ("Chameleon", "गिरगिट"),
-            ("Iguana", "इगुआना"), ("Komodo Dragon", "कोमोडो ड्रैगन"), ("Anaconda", "एनाकोंडा"),
-            ("Alligator", "घड़ियाल"), ("Gecko", "गेक्को"), ("Viper", "वाइपर"),
-            ("Rattlesnake", "रैटलस्नेक"), ("Boa Constrictor", "बोआ"), ("Monitor Lizard", "गोही"),
-            ("Garter Snake", "गार्टर सांप"), ("Sea Snake", "समुद्री सांप"), ("Copperhead", "कॉपरहेड"),
-            ("Horned Lizard", "सींग वाली छिपकली"), ("Sidewinder", "साइडवाइंडर")
-        ]
-    },
-    # Additional categories can be added in the same format
+    # Add more categories following the same structure
 }
 
 def display_categories():
@@ -42,13 +63,19 @@ def display_categories():
     for i, (category, details) in enumerate(animal_categories.items(), 1):
         print(f"{i}. {category} ({details['hindi']})")
 
-def display_examples(category_index):
+def display_examples(category_index, dissolved=True):
     category_keys = list(animal_categories.keys())
     if 0 <= category_index < len(category_keys):
         category = category_keys[category_index]
         details = animal_categories[category]
-        print(f"\nExamples of {category} ({details['hindi']}):")
-        for example in details["examples"]:
+        if dissolved:
+            examples = details.get("dissolved", [])
+            print(f"\nDissolved examples of {category} ({details['hindi']}):")
+        else:
+            examples = details.get("undissolved", [])
+            print(f"\nUndissolved examples of {category} ({details['hindi']}):")
+        
+        for example in examples:
             print(f" - {example[0]} ({example[1]})")
     else:
         print("Invalid category selected.")
@@ -61,6 +88,7 @@ while True:
         if choice == -1:
             print("Exiting program.")
             break
-        display_examples(choice)
+        dissolved_choice = input("Do you want dissolved (d) or undissolved (u) examples? ").strip().lower()
+        display_examples(choice, dissolved=(dissolved_choice == 'd'))
     except ValueError:
         print("Invalid input. Please enter a number.")
