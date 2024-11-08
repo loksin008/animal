@@ -1,30 +1,37 @@
-# Animal Categories with English to Hindi Translation, with navigation options for each page
+# Animal Categories with English to Hindi Translation and Examples
 
 animal_categories = {
     "Mammals": {
         "hindi": "स्तनधारी",
-        "dissolved": [
-            ("Whale", "व्हेल"), ("Dolphin", "डॉल्फिन"), ("Seal", "सील"), ("Manatee", "मेनाटी"),
-            ("Otter", "ओटर"), ("Sea Lion", "समुद्री सिंह"), ("Narwhal", "नारव्हाल"),
-            ("Beluga", "बेलुगा"), ("Walrus", "वालरस"), ("Sea Cow", "समुद्री गाय")
-        ],
-        "undissolved": [
+        "examples": [
             ("Elephant", "हाथी"), ("Lion", "सिंह"), ("Tiger", "बाघ"), ("Bear", "भालू"),
             ("Dog", "कुत्ता"), ("Cat", "बिल्ली"), ("Horse", "घोड़ा"), ("Cow", "गाय"),
-            ("Goat", "बकरी"), ("Pig", "सूअर")
+            ("Goat", "बकरी"), ("Pig", "सूअर"), ("Monkey", "बंदर"), ("Rabbit", "खरगोश"),
+            ("Fox", "लोमड़ी"), ("Wolf", "भेड़िया"), ("Bat", "चमगादड़"), ("Sheep", "भेड़"),
+            ("Camel", "ऊंट"), ("Buffalo", "भैंस"), ("Deer", "हिरण"), ("Rat", "चूहा")
         ]
     },
     "Birds": {
         "hindi": "पक्षी",
-        "dissolved": [
-            ("Seagull", "सीगल"), ("Pelican", "पेलिकन"), ("Albatross", "अल्बाट्रॉस"),
-            ("Cormorant", "कॉरमोरेंट"), ("Heron", "बगुला"), ("Kingfisher", "रामचिरैया"),
-            ("Duck", "बत्तख"), ("Swan", "हंस"), ("Crane", "सारस"), ("Flamingo", "फ्लेमिंगो")
-        ],
-        "undissolved": [
+        "examples": [
             ("Eagle", "गरुड़"), ("Parrot", "तोता"), ("Peacock", "मोर"), ("Sparrow", "गौरैया"),
-            ("Crow", "कौआ"), ("Pigeon", "कबूतर"), ("Owl", "उल्लू"), ("Robin", "रॉबिन"),
-            ("Canary", "कैनरी"), ("Turkey", "टर्की")
+            ("Crow", "कौआ"), ("Pigeon", "कबूतर"), ("Duck", "बत्तख"), ("Swan", "हंस"),
+            ("Owl", "उल्लू"), ("Woodpecker", "कठफोड़वा"), ("Kingfisher", "रामचिरैया"),
+            ("Penguin", "पेंगुइन"), ("Flamingo", "फ्लेमिंगो"), ("Hawk", "बाज"),
+            ("Turkey", "टर्की"), ("Quail", "बटेर"), ("Vulture", "गिद्ध"), ("Robin", "रॉबिन"),
+            ("Canary", "कैनरी"), ("Seagull", "सीगल")
+        ]
+    },
+    "Reptiles": {
+        "hindi": "सरीसृप",
+        "examples": [
+            ("Cobra", "नाग"), ("Python", "अजगर"), ("Crocodile", "मगरमच्छ"),
+            ("Lizard", "छिपकली"), ("Turtle", "कछुआ"), ("Chameleon", "गिरगिट"),
+            ("Iguana", "इगुआना"), ("Komodo Dragon", "कोमोडो ड्रैगन"), ("Anaconda", "एनाकोंडा"),
+            ("Alligator", "घड़ियाल"), ("Gecko", "गेक्को"), ("Viper", "वाइपर"),
+            ("Rattlesnake", "रैटलस्नेक"), ("Boa Constrictor", "बोआ"), ("Monitor Lizard", "गोही"),
+            ("Garter Snake", "गार्टर सांप"), ("Sea Snake", "समुद्री सांप"), ("Copperhead", "कॉपरहेड"),
+            ("Horned Lizard", "सींग वाली छिपकली"), ("Sidewinder", "साइडवाइंडर")
         ]
     },
     # Additional categories can be added here
@@ -36,33 +43,16 @@ def display_categories():
         print(f"{i}. {category} ({details['hindi']})")
     print("0. Exit")
 
-def display_dissolved_undissolved_options(category_index):
-    category_keys = list(animal_categories.keys())
-    if 0 <= category_index < len(category_keys):
-        category = category_keys[category_index]
-        details = animal_categories[category]
-        print(f"\nYou selected: {category} ({details['hindi']})")
-        print("1. Dissolved")
-        print("2. Undissolved")
-        print("0. Back")
-    else:
-        print("Invalid category selected.")
-
-def display_examples(category_index, dissolved=True):
+def display_examples(category_index):
     category_keys = list(animal_categories.keys())
     category = category_keys[category_index]
     details = animal_categories[category]
     
-    if dissolved:
-        examples = details.get("dissolved", [])
-        print(f"\nDissolved examples of {category} ({details['hindi']}):")
-    else:
-        examples = details.get("undissolved", [])
-        print(f"\nUndissolved examples of {category} ({details['hindi']}):")
-        
-    for example in examples:
+    print(f"\nExamples of {category} ({details['hindi']}):")
+    for example in details["examples"]:
         print(f" - {example[0]} ({example[1]})")
     print("\n0. Back")
+    print("9. Exit")
 
 # Main Program
 while True:
@@ -74,29 +64,14 @@ while True:
             break
         elif 1 <= category_choice <= len(animal_categories):
             while True:
-                display_dissolved_undissolved_options(category_choice - 1)
-                type_choice = input("\nEnter 1 for Dissolved, 2 for Undissolved, or 0 to go back: ").strip()
+                display_examples(category_choice - 1)
+                back_choice = input("\nEnter 0 to go back or 9 to exit: ").strip()
                 
-                if type_choice == "1":
-                    while True:
-                        display_examples(category_choice - 1, dissolved=True)
-                        back_choice = input("\nEnter 0 to go back: ").strip()
-                        if back_choice == "0":
-                            break
-                        else:
-                            print("Invalid input. Try again.")
-                
-                elif type_choice == "2":
-                    while True:
-                        display_examples(category_choice - 1, dissolved=False)
-                        back_choice = input("\nEnter 0 to go back: ").strip()
-                        if back_choice == "0":
-                            break
-                        else:
-                            print("Invalid input. Try again.")
-                
-                elif type_choice == "0":
+                if back_choice == "0":
                     break
+                elif back_choice == "9":
+                    print("Exiting program.")
+                    exit()
                 else:
                     print("Invalid input. Try again.")
         else:
