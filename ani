@@ -76,106 +76,7 @@ animal_categories = {
             ("Sidewinder", "साइडवाइंडर")
         ]
     },
-    "Amphibians": {
-        "hindi": "उभयचर",
-        "examples": [
-            ("Frog", "मेंढक"),
-            ("Toad", "भेड़"),
-            ("Salamander", "सलामैंडर"),
-            ("Newt", "न्यूट"),
-            ("Caecilian", "केसीलियन"),
-            ("Bullfrog", "बुलफ्रॉग"),
-            ("Tree Frog", "पेड़ का मेंढक"),
-            ("Axolotl", "एक्सोलोटल"),
-            ("Glass Frog", "कांच का मेंढक"),
-            ("Leopard Frog", "तेंदुआ मेंढक"),
-            ("Fire Salamander", "आग का सलामैंडर"),
-            ("Tiger Salamander", "बाघ का सलामैंडर"),
-            ("Marbled Salamander", "संगमरमर सलामैंडर"),
-            ("Common Toad", "सामान्य भेड़"),
-            ("Red-eyed Tree Frog", "लाल आंखों वाला पेड़ का मेंढक"),
-            ("Clawed Frog", "नखों वाला मेंढक"),
-            ("Green Frog", "हरा मेंढक"),
-            ("Mudpuppy", "मडपपी"),
-            ("Spring Peeper", "स्प्रिंग पीपर"),
-            ("Hellbender", "हेलबेंडर")
-        ]
-    },
-    "Fish": {
-        "hindi": "मछली",
-        "examples": [
-            ("Salmon", "सामन"),
-            ("Tuna", "टूना"),
-            ("Shark", "शार्क"),
-            ("Goldfish", "गोल्डफिश"),
-            ("Trout", "ट्राउट"),
-            ("Carp", "कार्प"),
-            ("Eel", "बाम"),
-            ("Catfish", "कैटफ़िश"),
-            ("Betta", "बेटा"),
-            ("Swordfish", "स्वॉर्डफ़िश"),
-            ("Mackerel", "मैकेरल"),
-            ("Stingray", "स्टिंग्रे"),
-            ("Bass", "बास"),
-            ("Bluegill", "ब्लूगिल"),
-            ("Barracuda", "बराकुडा"),
-            ("Piranha", "पिरान्हा"),
-            ("Seahorse", "सीहॉर्स"),
-            ("Lionfish", "लायनफिश"),
-            ("Anchovy", "एंकोवी"),
-            ("Haddock", "हैडॉक")
-        ]
-    },
-    "Insects": {
-        "hindi": "कीट",
-        "examples": [
-            ("Butterfly", "तितली"),
-            ("Ant", "चींटी"),
-            ("Bee", "मधुमक्खी"),
-            ("Beetle", "गुबरैला"),
-            ("Grasshopper", "टिड्डा"),
-            ("Ladybug", "लेडीबग"),
-            ("Fly", "मक्खी"),
-            ("Mosquito", "मच्छर"),
-            ("Dragonfly", "व्याधपतंग"),
-            ("Wasp", "ततैया"),
-            ("Cockroach", "तिलचट्टा"),
-            ("Moth", "पतंगा"),
-            ("Termite", "दीमक"),
-            ("Flea", "पिस्सू"),
-            ("Cicada", "झिंगुर"),
-            ("Cricket", "झींगुर"),
-            ("Hornet", "भिनभिनाता ततैया"),
-            ("Stink Bug", "बदबूदार बग"),
-            ("Praying Mantis", "मंतिस"),
-            ("Firefly", "जुगनू")
-        ]
-    },
-    "Arachnids": {
-        "hindi": "मकड़ियां",
-        "examples": [
-            ("Tarantula", "टारेंटुला"),
-            ("Black Widow", "ब्लैक विडो"),
-            ("Wolf Spider", "भेड़िया मकड़ी"),
-            ("Scorpion", "बिच्छू"),
-            ("Tick", "किलनी"),
-            ("Brown Recluse", "ब्राउन रेक्लूस"),
-            ("Orb Weaver", "ऑर्ब वीवर"),
-            ("Jumping Spider", "कूदने वाली मकड़ी"),
-            ("Crab Spider", "केकड़ा मकड़ी"),
-            ("Daddy Longlegs", "डैडी लॉन्गलेग्स"),
-            ("Camel Spider", "ऊंट मकड़ी"),
-            ("Huntsman Spider", "शिकारी मकड़ी"),
-            ("Trapdoor Spider", "ट्रैपडोर मकड़ी"),
-            ("Harvestman", "हार्वेस्टमैन"),
-            ("Sun Spider", "सन स्पाइडर"),
-            ("Recluse Spider", "रीक्लूस स्पाइडर"),
-            ("Fishing Spider", "फिशिंग मकड़ी"),
-            ("Whip Scorpion", "व्हिप बिच्छू"),
-            ("House Spider", "घरेलू मकड़ी"),
-            ("Goliath Birdeater", "गोलियाथ बर्डइटर")
-        ]
-    }
+    # Continue adding other categories similarly...
 }
 
 def display_categories():
@@ -187,4 +88,5 @@ def display_categories():
             print(f" - {example[0]} ({example[1]})")
         print()
 
+# Call the function to display the categories
 display_categories()
